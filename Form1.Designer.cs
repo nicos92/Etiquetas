@@ -38,8 +38,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TxtModificacion = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.SwitchEti = new MaterialSkin.Controls.MaterialSwitch();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.ComboBoxTipo = new MaterialSkin.Controls.MaterialComboBox();
             this.TxtNumero = new MaterialSkin.Controls.MaterialTextBox2();
             this.TxtDestino = new MaterialSkin.Controls.MaterialTextBox2();
             this.TxtFecha = new MaterialSkin.Controls.MaterialTextBox2();
@@ -50,6 +49,7 @@
             this.BtnActualizar = new MaterialSkin.Controls.MaterialButton();
             this.BtnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.CardData = new MaterialSkin.Controls.MaterialCard();
+            this.ImgTablaData = new System.Windows.Forms.PictureBox();
             this.TablaData = new System.Windows.Forms.DataGridView();
             this.CardFiltros = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,6 +66,7 @@
             this.CardOpciones.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.CardData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgTablaData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaData)).BeginInit();
             this.CardFiltros.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -121,12 +122,12 @@
             this.materialCard2.Depth = 0;
             this.materialCard2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(10, 233);
+            this.materialCard2.Location = new System.Drawing.Point(10, 254);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(10);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(766, 150);
+            this.materialCard2.Size = new System.Drawing.Size(766, 129);
             this.materialCard2.TabIndex = 1;
             // 
             // BtnGuardar
@@ -146,7 +147,7 @@
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.BtnGuardar.Size = new System.Drawing.Size(116, 36);
-            this.BtnGuardar.TabIndex = 1;
+            this.BtnGuardar.TabIndex = 5;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             this.BtnGuardar.UseAccentColor = false;
@@ -207,6 +208,7 @@
             this.TxtModificacion.Depth = 0;
             this.TxtModificacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.TxtModificacion.HideSelection = true;
+            this.TxtModificacion.Hint = "DESCRIPCION: ";
             this.TxtModificacion.Location = new System.Drawing.Point(14, 14);
             this.TxtModificacion.MaxLength = 32767;
             this.TxtModificacion.MouseState = MaterialSkin.MouseState.OUT;
@@ -218,18 +220,17 @@
             this.TxtModificacion.SelectionLength = 0;
             this.TxtModificacion.SelectionStart = 0;
             this.TxtModificacion.ShortcutsEnabled = true;
-            this.TxtModificacion.Size = new System.Drawing.Size(568, 122);
-            this.TxtModificacion.TabIndex = 0;
+            this.TxtModificacion.Size = new System.Drawing.Size(568, 101);
+            this.TxtModificacion.TabIndex = 4;
             this.TxtModificacion.TabStop = false;
-            this.TxtModificacion.Text = "Modificacion: ";
             this.TxtModificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TxtModificacion.UseSystemPasswordChar = false;
+            this.TxtModificacion.TextChanged += new System.EventHandler(this.TxtModificacion_TextChanged);
             // 
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.SwitchEti);
-            this.materialCard1.Controls.Add(this.materialLabel2);
+            this.materialCard1.Controls.Add(this.ComboBoxTipo);
             this.materialCard1.Controls.Add(this.TxtNumero);
             this.materialCard1.Controls.Add(this.TxtDestino);
             this.materialCard1.Controls.Add(this.TxtFecha);
@@ -241,36 +242,35 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(766, 230);
+            this.materialCard1.Size = new System.Drawing.Size(766, 248);
             this.materialCard1.TabIndex = 0;
             // 
-            // SwitchEti
+            // ComboBoxTipo
             // 
-            this.SwitchEti.AutoSize = true;
-            this.SwitchEti.BackColor = System.Drawing.Color.White;
-            this.SwitchEti.Depth = 0;
-            this.SwitchEti.Location = new System.Drawing.Point(108, 177);
-            this.SwitchEti.Margin = new System.Windows.Forms.Padding(0);
-            this.SwitchEti.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.SwitchEti.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SwitchEti.Name = "SwitchEti";
-            this.SwitchEti.Ripple = true;
-            this.SwitchEti.Size = new System.Drawing.Size(123, 37);
-            this.SwitchEti.TabIndex = 5;
-            this.SwitchEti.Text = "INTERNA";
-            this.SwitchEti.UseVisualStyleBackColor = false;
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(37, 185);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(70, 19);
-            this.materialLabel2.TabIndex = 4;
-            this.materialLabel2.Text = "EXTERNA";
+            this.ComboBoxTipo.AutoResize = false;
+            this.ComboBoxTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxTipo.Depth = 0;
+            this.ComboBoxTipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBoxTipo.DropDownHeight = 174;
+            this.ComboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxTipo.DropDownWidth = 121;
+            this.ComboBoxTipo.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBoxTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBoxTipo.FormattingEnabled = true;
+            this.ComboBoxTipo.Hint = "TIPO Interna - Externa:";
+            this.ComboBoxTipo.IntegralHeight = false;
+            this.ComboBoxTipo.ItemHeight = 43;
+            this.ComboBoxTipo.Items.AddRange(new object[] {
+            "AMBOS",
+            "INTERNA",
+            "EXTERNA"});
+            this.ComboBoxTipo.Location = new System.Drawing.Point(17, 182);
+            this.ComboBoxTipo.MaxDropDownItems = 4;
+            this.ComboBoxTipo.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBoxTipo.Name = "ComboBoxTipo";
+            this.ComboBoxTipo.Size = new System.Drawing.Size(250, 49);
+            this.ComboBoxTipo.StartIndex = 0;
+            this.ComboBoxTipo.TabIndex = 3;
             // 
             // TxtNumero
             // 
@@ -280,7 +280,7 @@
             this.TxtNumero.Depth = 0;
             this.TxtNumero.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtNumero.HideSelection = true;
-            this.TxtNumero.Hint = "NUMERO";
+            this.TxtNumero.Hint = "ETIQUETA";
             this.TxtNumero.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_una_página_50;
             this.TxtNumero.Location = new System.Drawing.Point(17, 71);
             this.TxtNumero.MaxLength = 32767;
@@ -295,11 +295,12 @@
             this.TxtNumero.SelectionStart = 0;
             this.TxtNumero.ShortcutsEnabled = true;
             this.TxtNumero.Size = new System.Drawing.Size(250, 48);
-            this.TxtNumero.TabIndex = 2;
+            this.TxtNumero.TabIndex = 1;
             this.TxtNumero.TabStop = false;
             this.TxtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TxtNumero.TrailingIcon = null;
             this.TxtNumero.UseSystemPasswordChar = false;
+            this.TxtNumero.TextChanged += new System.EventHandler(this.TxtNumero_TextChanged);
             // 
             // TxtDestino
             // 
@@ -324,11 +325,12 @@
             this.TxtDestino.SelectionStart = 0;
             this.TxtDestino.ShortcutsEnabled = true;
             this.TxtDestino.Size = new System.Drawing.Size(250, 48);
-            this.TxtDestino.TabIndex = 1;
+            this.TxtDestino.TabIndex = 2;
             this.TxtDestino.TabStop = false;
             this.TxtDestino.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TxtDestino.TrailingIcon = null;
             this.TxtDestino.UseSystemPasswordChar = false;
+            this.TxtDestino.TextChanged += new System.EventHandler(this.TxtDestino_TextChanged);
             // 
             // TxtFecha
             // 
@@ -358,6 +360,7 @@
             this.TxtFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TxtFecha.TrailingIcon = null;
             this.TxtFecha.UseSystemPasswordChar = false;
+            this.TxtFecha.TextChanged += new System.EventHandler(this.TxtFecha_TextChanged);
             // 
             // PageConsulta
             // 
@@ -473,6 +476,7 @@
             // 
             this.CardData.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CardData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CardData.Controls.Add(this.ImgTablaData);
             this.CardData.Controls.Add(this.TablaData);
             this.CardData.Depth = 0;
             this.CardData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -484,11 +488,23 @@
             this.CardData.Size = new System.Drawing.Size(716, 275);
             this.CardData.TabIndex = 1;
             // 
+            // ImgTablaData
+            // 
+            this.ImgTablaData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImgTablaData.Image = global::Etiquetas.Properties.Resources.techny_working_with_big_data_on_server;
+            this.ImgTablaData.Location = new System.Drawing.Point(14, 14);
+            this.ImgTablaData.Name = "ImgTablaData";
+            this.ImgTablaData.Size = new System.Drawing.Size(688, 247);
+            this.ImgTablaData.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgTablaData.TabIndex = 1;
+            this.ImgTablaData.TabStop = false;
+            // 
             // TablaData
             // 
             this.TablaData.AllowUserToAddRows = false;
             this.TablaData.AllowUserToDeleteRows = false;
             this.TablaData.AllowUserToOrderColumns = true;
+            this.TablaData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TablaData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TablaData.Location = new System.Drawing.Point(14, 14);
@@ -496,6 +512,7 @@
             this.TablaData.ReadOnly = true;
             this.TablaData.Size = new System.Drawing.Size(688, 247);
             this.TablaData.TabIndex = 0;
+            this.TablaData.Visible = false;
             // 
             // CardFiltros
             // 
@@ -515,12 +532,12 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.tableLayoutPanel2.Controls.Add(this.BtnBuscar, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.ComboTipo, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ComboNumero, 3, 0);
@@ -530,7 +547,6 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(764, 53);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -543,7 +559,7 @@
             this.BtnBuscar.DrawShadows = false;
             this.BtnBuscar.HighEmphasis = true;
             this.BtnBuscar.Icon = global::Etiquetas.Properties.Resources.icons8_búsqueda_50;
-            this.BtnBuscar.Location = new System.Drawing.Point(555, 8);
+            this.BtnBuscar.Location = new System.Drawing.Point(580, 8);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnBuscar.Name = "BtnBuscar";
@@ -554,6 +570,7 @@
             this.BtnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             this.BtnBuscar.UseAccentColor = false;
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // ComboTipo
             // 
@@ -568,19 +585,22 @@
             this.ComboTipo.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.ComboTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.ComboTipo.FormattingEnabled = true;
-            this.ComboTipo.Hint = "Tipo";
+            this.ComboTipo.Hint = "Tipo: Interna - Externa";
             this.ComboTipo.IntegralHeight = false;
             this.ComboTipo.ItemHeight = 43;
             this.ComboTipo.Items.AddRange(new object[] {
+            "AMBOS",
             "EXTERNA",
             "INTERNA"});
-            this.ComboTipo.Location = new System.Drawing.Point(92, 3);
+            this.ComboTipo.Location = new System.Drawing.Point(59, 3);
             this.ComboTipo.MaxDropDownItems = 4;
             this.ComboTipo.MouseState = MaterialSkin.MouseState.OUT;
             this.ComboTipo.Name = "ComboTipo";
-            this.ComboTipo.Size = new System.Drawing.Size(120, 49);
+            this.ComboTipo.Size = new System.Drawing.Size(140, 49);
             this.ComboTipo.StartIndex = 0;
             this.ComboTipo.TabIndex = 0;
+            this.ComboTipo.DropDown += new System.EventHandler(this.ComboTipo_DropDown);
+            this.ComboTipo.DropDownClosed += new System.EventHandler(this.ComboTipo_DropDownClosed);
             // 
             // ComboNumero
             // 
@@ -592,24 +612,18 @@
             this.ComboNumero.DropDownHeight = 174;
             this.ComboNumero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboNumero.DropDownWidth = 121;
+            this.ComboNumero.Enabled = false;
             this.ComboNumero.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.ComboNumero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.ComboNumero.FormattingEnabled = true;
             this.ComboNumero.Hint = "Numero";
             this.ComboNumero.IntegralHeight = false;
             this.ComboNumero.ItemHeight = 43;
-            this.ComboNumero.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.ComboNumero.Location = new System.Drawing.Point(396, 3);
+            this.ComboNumero.Location = new System.Drawing.Point(395, 3);
             this.ComboNumero.MaxDropDownItems = 4;
             this.ComboNumero.MouseState = MaterialSkin.MouseState.OUT;
             this.ComboNumero.Name = "ComboNumero";
-            this.ComboNumero.Size = new System.Drawing.Size(120, 49);
+            this.ComboNumero.Size = new System.Drawing.Size(140, 49);
             this.ComboNumero.StartIndex = 0;
             this.ComboNumero.TabIndex = 2;
             // 
@@ -629,18 +643,14 @@
             this.ComboDestino.Hint = "Destino";
             this.ComboDestino.IntegralHeight = false;
             this.ComboDestino.ItemHeight = 43;
-            this.ComboDestino.Items.AddRange(new object[] {
-            "CHINA",
-            "UE",
-            "USA",
-            "HEBREO"});
-            this.ComboDestino.Location = new System.Drawing.Point(244, 3);
+            this.ComboDestino.Location = new System.Drawing.Point(227, 3);
             this.ComboDestino.MaxDropDownItems = 4;
             this.ComboDestino.MouseState = MaterialSkin.MouseState.OUT;
             this.ComboDestino.Name = "ComboDestino";
-            this.ComboDestino.Size = new System.Drawing.Size(120, 49);
+            this.ComboDestino.Size = new System.Drawing.Size(140, 49);
             this.ComboDestino.StartIndex = 0;
             this.ComboDestino.TabIndex = 1;
+            this.ComboDestino.DropDownClosed += new System.EventHandler(this.ComboDestino_DropDownClosed);
             // 
             // PageConfig
             // 
@@ -668,19 +678,19 @@
             this.Name = "FormMain";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Inicio";
+            this.Text = "ETIQUETAS MODIFICADAS";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.TabControlMain.ResumeLayout(false);
             this.PageIngreso.ResumeLayout(false);
             this.materialCard2.ResumeLayout(false);
             this.materialCard2.PerformLayout();
             this.materialCard1.ResumeLayout(false);
-            this.materialCard1.PerformLayout();
             this.PageConsulta.ResumeLayout(false);
             this.CardOpciones.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.CardData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImgTablaData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaData)).EndInit();
             this.CardFiltros.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -700,8 +710,6 @@
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 TxtModificacion;
-        private MaterialSkin.Controls.MaterialSwitch SwitchEti;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialTextBox2 TxtNumero;
         private MaterialSkin.Controls.MaterialTextBox2 TxtDestino;
         private MaterialSkin.Controls.MaterialTextBox2 TxtFecha;
@@ -710,7 +718,6 @@
         private MaterialSkin.Controls.MaterialCard CardData;
         private MaterialSkin.Controls.MaterialCard CardFiltros;
         private MaterialSkin.Controls.MaterialComboBox ComboTipo;
-        private MaterialSkin.Controls.MaterialComboBox ComboDestino;
         private MaterialSkin.Controls.MaterialComboBox ComboNumero;
         private MaterialSkin.Controls.MaterialButton BtnBuscar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -719,6 +726,9 @@
         private MaterialSkin.Controls.MaterialButton BtnEliminar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView TablaData;
+        private MaterialSkin.Controls.MaterialComboBox ComboBoxTipo;
+        private System.Windows.Forms.PictureBox ImgTablaData;
+        public MaterialSkin.Controls.MaterialComboBox ComboDestino;
     }
 }
 

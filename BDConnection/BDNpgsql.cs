@@ -10,13 +10,21 @@ namespace Etiquetas.BDConnection
     public sealed class BDNpgsql
     {
         private static BDNpgsql _instance = null;
-        private static readonly object _lock = new object();
-        private NpgsqlConnection _conn;
+        private static readonly object _lock = new();
+        private readonly NpgsqlConnection _connection;
+
+
+        private const string Host = "localhost";
+        private const string Port = "62534";
+        private const string Username = "postgres";
+        private const string Password = "K-UfP+cDw3N%0>*^*BcX";
+        private const string Database = "bdetismod";
+
+        private const string connString = "Host="+Host+";Port="+Port+";Username="+Username+";Password="+Password+";Database="+ Database+";MaxPoolSize=200;";
 
         private BDNpgsql()
         {
-            string connString = "";
-            _conn = new NpgsqlConnection(connString);
+            _connection = new NpgsqlConnection(connString);
         }
 
         public static BDNpgsql Instance
@@ -27,30 +35,29 @@ namespace Etiquetas.BDConnection
                 {
                     lock (_lock)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new BDNpgsql();
-                        }
+                        _instance ??= new BDNpgsql();
                     }
                 }
                 return _instance;
             }
         }
 
-        public NpgsqlConnection GetConnection()
+        public NpgsqlConnection GetConnection
         {
+            get
+            {
+                if (_connection.State != System.Data.ConnectionState.Open)
+                    _connection.Open();
 
-            if (_conn.State != System.Data.ConnectionState.Open)
-                _conn.Open();
-
-            return _conn;
-
+                return _connection;
+            }
         }
 
         public void CloseConnection()
         {
-            if (_conn.State != System.Data.ConnectionState.Closed)
-                _conn.Close();
+            if (_connection.State != System.Data.ConnectionState.Closed)
+                _connection.Close();
         }
+
     }
 }
