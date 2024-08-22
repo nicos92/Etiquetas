@@ -62,11 +62,7 @@ namespace Etiquetas
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            /*
-             * AMBOS
-EXTERNA
-INTERNA
-             */
+            
             string tipo = ComboTipo.Text != "INTERNA" && ComboTipo.Text != "EXTERNA" ? "" : ComboTipo.Text;
             string destino = ComboDestino.Text.ToUpper();
             string numero = ComboNumero.Text.ToUpper();
@@ -87,7 +83,6 @@ INTERNA
                 {
                     ComboDestino.Items.Add(item);
                 };
-                ComboDestino.Items.Add("");
             }
         }
 
@@ -102,7 +97,6 @@ INTERNA
                 {
                     ComboNumero.Items.Add(item);
                 };
-                ComboNumero.Items.Add("");
             }
         }
 
