@@ -12,6 +12,66 @@ namespace Etiquetas.Repository
 {
     public class RepoModificacion
     {
+
+        public static async Task InsertDataAsync(string fecha, string numero, string destino, string tipo, string descripcion)
+        {
+            var conn = BDNpgsql.Instance.GetConnectionAsync;
+
+            string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', '{tipo}', '{descripcion}');";
+
+            try
+            {
+                 using var cmd = new NpgsqlCommand(insert, conn);
+                 await cmd.ExecuteNonQueryAsync();
+
+                
+
+            }
+            catch (NpgsqlException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+            }
+            catch (InvalidOperationException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
+            }
+            BDNpgsql.Instance.CloseConnection();
+
+            Utils.Util.CartelConfirmInfo("ingreso correcto", "insercion");
+            
+        }
+
+        public static async Task InsertDateDobleAsync(string fecha, string numero, string destino, string descripcion)
+        {
+            
+
+            string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', 'INTERNA', '{descripcion}')," +
+                $"('{fecha}', '{numero}', '{destino}', 'EXTERNA', '{descripcion}');";
+
+            try
+            {
+                 using (NpgsqlCommand cmd = new(insert, BDNpgsql.Instance.GetConnectionAsync))
+                {
+                    await cmd.ExecuteNonQueryAsync();
+                }
+
+                BDNpgsql.Instance.CloseConnection();
+            }
+            catch (NpgsqlException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+            }
+            catch (InvalidOperationException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
+            }
+            Utils.Util.CartelConfirmInfo("ingreso correcto", "insercion");
+
+        }
         public static int IngresarModificacion(string fecha, string numero, string destino, string tipo, string descripcion)
         {
             int result = 0;
@@ -200,5 +260,7 @@ namespace Etiquetas.Repository
             }
             return numeros;
         }
+
+        
     }
 }

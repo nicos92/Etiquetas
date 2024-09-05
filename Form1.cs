@@ -39,15 +39,15 @@ namespace Etiquetas
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-
+            
             string fecha = TxtFecha.Text.Trim();
             string numero = TxtNumero.Text.Trim().ToUpper();
             string destino = TxtDestino.Text.Trim().ToUpper();
             string tipo = ComboBoxTipo.Text;
             string descripcion = TxtModificacion.Text.Trim();
 
-            int result;
-
+            //int result = 0;
+            /*
             if (tipo == "AMBOS")
             {
                 result = ServModificacion.IngresarModificacionDoble(fecha, numero, destino, descripcion);
@@ -56,8 +56,17 @@ namespace Etiquetas
             {
                 result = ServModificacion.IngresarModificacion(fecha, numero, destino, tipo, descripcion);
             }
+            */
+            if (tipo == "AMBOS")
+            {
+               ServModificacion.IngresarModificacionDobleAsync(fecha, numero, destino, descripcion);
+            }
+            else
+            {
+               ServModificacion.IngresarModificacionAsync(fecha, numero, destino, tipo, descripcion);
+            }
 
-            MostrarResult(result);
+            //MostrarResult(result);
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -102,6 +111,7 @@ namespace Etiquetas
 
         private void MostrarResult(int result)
         {
+            
             if (result > 0)
             {
                 Util.CartelConfirmInfo("Ingreso correcto", "INGRESO");
@@ -117,7 +127,6 @@ namespace Etiquetas
         {
             TxtFecha.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
             CargarDestinos();
-
         }
 
 

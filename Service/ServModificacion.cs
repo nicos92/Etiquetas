@@ -3,6 +3,7 @@ using Etiquetas.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +45,16 @@ namespace Etiquetas.Service
         internal static IEnumerable<object> GetListNumeros(string tipo, string destino)
         {
             return RepoModificacion.GetListNumeros(tipo, destino);
+        }
+
+        internal static async void IngresarModificacionDobleAsync(string fecha, string numero, string destino, string descripcion)
+        {
+            await RepoModificacion.InsertDateDobleAsync(fecha, numero, destino, descripcion);
+        }
+
+        internal static async void  IngresarModificacionAsync(string fecha, string numero, string destino, string tipo, string descripcion)
+        {
+            await RepoModificacion.InsertDataAsync(fecha, numero, destino, tipo, descripcion);
         }
     }
 }

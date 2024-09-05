@@ -53,6 +53,17 @@ namespace Etiquetas.BDConnection
             }
         }
 
+        public NpgsqlConnection GetConnectionAsync
+        {
+            get
+            {
+                if (_connection.State != System.Data.ConnectionState.Open)
+                    _connection.OpenAsync();
+
+                return _connection;
+            }
+        }
+
         public void CloseConnection()
         {
             if (_connection.State != System.Data.ConnectionState.Closed)

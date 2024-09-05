@@ -32,22 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.ProgressBarTop = new MaterialSkin.Controls.MaterialProgressBar();
             this.TabControlMain = new MaterialSkin.Controls.MaterialTabControl();
+            this.PageModificacion = new System.Windows.Forms.TabPage();
             this.PageIngreso = new System.Windows.Forms.TabPage();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnGuardar = new MaterialSkin.Controls.MaterialButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TxtModificacion = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.ComboBoxTipo = new MaterialSkin.Controls.MaterialComboBox();
+            this.TxtFecha = new MaterialSkin.Controls.MaterialTextBox2();
             this.TxtNumero = new MaterialSkin.Controls.MaterialTextBox2();
             this.TxtDestino = new MaterialSkin.Controls.MaterialTextBox2();
-            this.TxtFecha = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBoxTipo = new MaterialSkin.Controls.MaterialComboBox();
             this.PageConsulta = new System.Windows.Forms.TabPage();
-            this.CardOpciones = new MaterialSkin.Controls.MaterialCard();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.BtnVer = new MaterialSkin.Controls.MaterialButton();
-            this.BtnActualizar = new MaterialSkin.Controls.MaterialButton();
-            this.BtnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.CardData = new MaterialSkin.Controls.MaterialCard();
             this.ImgTablaData = new System.Windows.Forms.PictureBox();
             this.TablaData = new System.Windows.Forms.DataGridView();
@@ -57,44 +54,47 @@
             this.ComboTipo = new MaterialSkin.Controls.MaterialComboBox();
             this.ComboNumero = new MaterialSkin.Controls.MaterialComboBox();
             this.ComboDestino = new MaterialSkin.Controls.MaterialComboBox();
-            this.PageConfig = new System.Windows.Forms.TabPage();
-            this.PageModificacion = new System.Windows.Forms.TabPage();
+            this.CardOpciones = new MaterialSkin.Controls.MaterialCard();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnVer = new MaterialSkin.Controls.MaterialButton();
+            this.BtnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnEliminar = new MaterialSkin.Controls.MaterialButton();
             this.PageDestinos = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
-            this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.TxtDestinoDestino = new MaterialSkin.Controls.MaterialTextBox2();
-            this.BtnGuardarDestino = new MaterialSkin.Controls.MaterialButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.TxtDestinoBuscar = new MaterialSkin.Controls.MaterialTextBox2();
             this.BtnDestinoBuscar = new MaterialSkin.Controls.MaterialButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.TxtDestinoingresar = new MaterialSkin.Controls.MaterialTextBox2();
+            this.BtnGuardarDestino = new MaterialSkin.Controls.MaterialButton();
+            this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.TxtDestinoEditar = new MaterialSkin.Controls.MaterialTextBox2();
             this.BtnDestinoEliminar = new MaterialSkin.Controls.MaterialButton();
             this.BtnDestinoActualizar = new MaterialSkin.Controls.MaterialButton();
-            this.TxtDestinoEditar = new MaterialSkin.Controls.MaterialTextBox2();
+            this.PageConfig = new System.Windows.Forms.TabPage();
             this.TabControlMain.SuspendLayout();
             this.PageIngreso.SuspendLayout();
             this.materialCard2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.materialCard1.SuspendLayout();
             this.PageConsulta.SuspendLayout();
-            this.CardOpciones.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.CardData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgTablaData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaData)).BeginInit();
             this.CardFiltros.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.CardOpciones.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.PageDestinos.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.materialCard3.SuspendLayout();
             this.materialCard4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
             this.materialCard5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.materialCard3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +129,16 @@
             this.TabControlMain.Size = new System.Drawing.Size(954, 528);
             this.TabControlMain.TabIndex = 2;
             // 
+            // PageModificacion
+            // 
+            this.PageModificacion.ImageKey = "icons8-editar-archivo-26.png";
+            this.PageModificacion.Location = new System.Drawing.Point(4, 31);
+            this.PageModificacion.Name = "PageModificacion";
+            this.PageModificacion.Size = new System.Drawing.Size(946, 493);
+            this.PageModificacion.TabIndex = 4;
+            this.PageModificacion.Text = "Modificacion";
+            this.PageModificacion.UseVisualStyleBackColor = true;
+            // 
             // PageIngreso
             // 
             this.PageIngreso.Controls.Add(this.materialCard2);
@@ -158,6 +168,23 @@
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard2.Size = new System.Drawing.Size(926, 225);
             this.materialCard2.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 5;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.BtnGuardar, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(14, 158);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(898, 53);
+            this.tableLayoutPanel3.TabIndex = 6;
             // 
             // BtnGuardar
             // 
@@ -288,32 +315,35 @@
             this.materialCard1.Size = new System.Drawing.Size(926, 248);
             this.materialCard1.TabIndex = 0;
             // 
-            // ComboBoxTipo
+            // TxtFecha
             // 
-            this.ComboBoxTipo.AutoResize = false;
-            this.ComboBoxTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ComboBoxTipo.Depth = 0;
-            this.ComboBoxTipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.ComboBoxTipo.DropDownHeight = 174;
-            this.ComboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxTipo.DropDownWidth = 121;
-            this.ComboBoxTipo.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.ComboBoxTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ComboBoxTipo.FormattingEnabled = true;
-            this.ComboBoxTipo.Hint = "TIPO Interna - Externa:";
-            this.ComboBoxTipo.IntegralHeight = false;
-            this.ComboBoxTipo.ItemHeight = 43;
-            this.ComboBoxTipo.Items.AddRange(new object[] {
-            "AMBOS",
-            "INTERNA",
-            "EXTERNA"});
-            this.ComboBoxTipo.Location = new System.Drawing.Point(17, 182);
-            this.ComboBoxTipo.MaxDropDownItems = 4;
-            this.ComboBoxTipo.MouseState = MaterialSkin.MouseState.OUT;
-            this.ComboBoxTipo.Name = "ComboBoxTipo";
-            this.ComboBoxTipo.Size = new System.Drawing.Size(250, 49);
-            this.ComboBoxTipo.StartIndex = 0;
-            this.ComboBoxTipo.TabIndex = 3;
+            this.TxtFecha.AnimateReadOnly = false;
+            this.TxtFecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TxtFecha.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TxtFecha.Depth = 0;
+            this.TxtFecha.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtFecha.HideSelection = true;
+            this.TxtFecha.Hint = "FECHA";
+            this.TxtFecha.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_calendario_50;
+            this.TxtFecha.Location = new System.Drawing.Point(17, 17);
+            this.TxtFecha.MaxLength = 32767;
+            this.TxtFecha.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtFecha.Name = "TxtFecha";
+            this.TxtFecha.PasswordChar = '\0';
+            this.TxtFecha.PrefixSuffixText = null;
+            this.TxtFecha.ReadOnly = false;
+            this.TxtFecha.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtFecha.SelectedText = "";
+            this.TxtFecha.SelectionLength = 0;
+            this.TxtFecha.SelectionStart = 0;
+            this.TxtFecha.ShortcutsEnabled = true;
+            this.TxtFecha.Size = new System.Drawing.Size(250, 48);
+            this.TxtFecha.TabIndex = 0;
+            this.TxtFecha.TabStop = false;
+            this.TxtFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtFecha.TrailingIcon = null;
+            this.TxtFecha.UseSystemPasswordChar = false;
+            this.TxtFecha.TextChanged += new System.EventHandler(this.TxtFecha_TextChanged);
             // 
             // TxtNumero
             // 
@@ -375,35 +405,32 @@
             this.TxtDestino.UseSystemPasswordChar = false;
             this.TxtDestino.TextChanged += new System.EventHandler(this.TxtDestino_TextChanged);
             // 
-            // TxtFecha
+            // ComboBoxTipo
             // 
-            this.TxtFecha.AnimateReadOnly = false;
-            this.TxtFecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TxtFecha.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.TxtFecha.Depth = 0;
-            this.TxtFecha.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TxtFecha.HideSelection = true;
-            this.TxtFecha.Hint = "FECHA";
-            this.TxtFecha.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_calendario_50;
-            this.TxtFecha.Location = new System.Drawing.Point(17, 17);
-            this.TxtFecha.MaxLength = 32767;
-            this.TxtFecha.MouseState = MaterialSkin.MouseState.OUT;
-            this.TxtFecha.Name = "TxtFecha";
-            this.TxtFecha.PasswordChar = '\0';
-            this.TxtFecha.PrefixSuffixText = null;
-            this.TxtFecha.ReadOnly = false;
-            this.TxtFecha.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtFecha.SelectedText = "";
-            this.TxtFecha.SelectionLength = 0;
-            this.TxtFecha.SelectionStart = 0;
-            this.TxtFecha.ShortcutsEnabled = true;
-            this.TxtFecha.Size = new System.Drawing.Size(250, 48);
-            this.TxtFecha.TabIndex = 0;
-            this.TxtFecha.TabStop = false;
-            this.TxtFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TxtFecha.TrailingIcon = null;
-            this.TxtFecha.UseSystemPasswordChar = false;
-            this.TxtFecha.TextChanged += new System.EventHandler(this.TxtFecha_TextChanged);
+            this.ComboBoxTipo.AutoResize = false;
+            this.ComboBoxTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxTipo.Depth = 0;
+            this.ComboBoxTipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBoxTipo.DropDownHeight = 174;
+            this.ComboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxTipo.DropDownWidth = 121;
+            this.ComboBoxTipo.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBoxTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBoxTipo.FormattingEnabled = true;
+            this.ComboBoxTipo.Hint = "TIPO Interna - Externa:";
+            this.ComboBoxTipo.IntegralHeight = false;
+            this.ComboBoxTipo.ItemHeight = 43;
+            this.ComboBoxTipo.Items.AddRange(new object[] {
+            "AMBOS",
+            "INTERNA",
+            "EXTERNA"});
+            this.ComboBoxTipo.Location = new System.Drawing.Point(17, 182);
+            this.ComboBoxTipo.MaxDropDownItems = 4;
+            this.ComboBoxTipo.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBoxTipo.Name = "ComboBoxTipo";
+            this.ComboBoxTipo.Size = new System.Drawing.Size(250, 49);
+            this.ComboBoxTipo.StartIndex = 0;
+            this.ComboBoxTipo.TabIndex = 3;
             // 
             // PageConsulta
             // 
@@ -418,102 +445,6 @@
             this.PageConsulta.TabIndex = 3;
             this.PageConsulta.Text = "Consultas";
             this.PageConsulta.UseVisualStyleBackColor = true;
-            // 
-            // CardOpciones
-            // 
-            this.CardOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CardOpciones.Controls.Add(this.tableLayoutPanel1);
-            this.CardOpciones.Depth = 0;
-            this.CardOpciones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CardOpciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CardOpciones.Location = new System.Drawing.Point(10, 433);
-            this.CardOpciones.Margin = new System.Windows.Forms.Padding(14);
-            this.CardOpciones.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CardOpciones.Name = "CardOpciones";
-            this.CardOpciones.Padding = new System.Windows.Forms.Padding(1);
-            this.CardOpciones.Size = new System.Drawing.Size(926, 50);
-            this.CardOpciones.TabIndex = 2;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.BtnVer, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnActualizar, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnEliminar, 5, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(924, 48);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // BtnVer
-            // 
-            this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnVer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnVer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BtnVer.Depth = 0;
-            this.BtnVer.HighEmphasis = true;
-            this.BtnVer.Icon = global::Etiquetas.Properties.Resources.icons8_visible_50;
-            this.BtnVer.Location = new System.Drawing.Point(146, 6);
-            this.BtnVer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnVer.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnVer.Name = "BtnVer";
-            this.BtnVer.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnVer.Size = new System.Drawing.Size(76, 36);
-            this.BtnVer.TabIndex = 0;
-            this.BtnVer.Text = "Ver";
-            this.BtnVer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.BtnVer.UseAccentColor = false;
-            this.BtnVer.UseVisualStyleBackColor = true;
-            // 
-            // BtnActualizar
-            // 
-            this.BtnActualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnActualizar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BtnActualizar.Depth = 0;
-            this.BtnActualizar.HighEmphasis = true;
-            this.BtnActualizar.Icon = global::Etiquetas.Properties.Resources.icons8_editar_64;
-            this.BtnActualizar.Location = new System.Drawing.Point(391, 6);
-            this.BtnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnActualizar.Name = "BtnActualizar";
-            this.BtnActualizar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnActualizar.Size = new System.Drawing.Size(137, 36);
-            this.BtnActualizar.TabIndex = 1;
-            this.BtnActualizar.Text = "Actualizar";
-            this.BtnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.BtnActualizar.UseAccentColor = false;
-            this.BtnActualizar.UseVisualStyleBackColor = true;
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BtnEliminar.Depth = 0;
-            this.BtnEliminar.HighEmphasis = true;
-            this.BtnEliminar.Icon = global::Etiquetas.Properties.Resources.icons8_basura_64;
-            this.BtnEliminar.Location = new System.Drawing.Point(678, 6);
-            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnEliminar.Size = new System.Drawing.Size(116, 36);
-            this.BtnEliminar.TabIndex = 2;
-            this.BtnEliminar.Text = "Eliminar";
-            this.BtnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.BtnEliminar.UseAccentColor = false;
-            this.BtnEliminar.UseVisualStyleBackColor = true;
             // 
             // CardData
             // 
@@ -699,25 +630,101 @@
             this.ComboDestino.TabIndex = 1;
             this.ComboDestino.DropDownClosed += new System.EventHandler(this.ComboDestino_DropDownClosed);
             // 
-            // PageConfig
+            // CardOpciones
             // 
-            this.PageConfig.ImageKey = "icons8-settings-50.png";
-            this.PageConfig.Location = new System.Drawing.Point(4, 31);
-            this.PageConfig.Name = "PageConfig";
-            this.PageConfig.Size = new System.Drawing.Size(786, 393);
-            this.PageConfig.TabIndex = 2;
-            this.PageConfig.Text = "Configuracion";
-            this.PageConfig.UseVisualStyleBackColor = true;
+            this.CardOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CardOpciones.Controls.Add(this.tableLayoutPanel1);
+            this.CardOpciones.Depth = 0;
+            this.CardOpciones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CardOpciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CardOpciones.Location = new System.Drawing.Point(10, 433);
+            this.CardOpciones.Margin = new System.Windows.Forms.Padding(14);
+            this.CardOpciones.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CardOpciones.Name = "CardOpciones";
+            this.CardOpciones.Padding = new System.Windows.Forms.Padding(1);
+            this.CardOpciones.Size = new System.Drawing.Size(926, 50);
+            this.CardOpciones.TabIndex = 2;
             // 
-            // PageModificacion
+            // tableLayoutPanel1
             // 
-            this.PageModificacion.ImageKey = "icons8-editar-archivo-26.png";
-            this.PageModificacion.Location = new System.Drawing.Point(4, 31);
-            this.PageModificacion.Name = "PageModificacion";
-            this.PageModificacion.Size = new System.Drawing.Size(946, 493);
-            this.PageModificacion.TabIndex = 4;
-            this.PageModificacion.Text = "Modificacion";
-            this.PageModificacion.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.BtnVer, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnActualizar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnEliminar, 5, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(924, 48);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // BtnVer
+            // 
+            this.BtnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnVer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnVer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.BtnVer.Depth = 0;
+            this.BtnVer.HighEmphasis = true;
+            this.BtnVer.Icon = global::Etiquetas.Properties.Resources.icons8_visible_50;
+            this.BtnVer.Location = new System.Drawing.Point(146, 6);
+            this.BtnVer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnVer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnVer.Name = "BtnVer";
+            this.BtnVer.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.BtnVer.Size = new System.Drawing.Size(76, 36);
+            this.BtnVer.TabIndex = 0;
+            this.BtnVer.Text = "Ver";
+            this.BtnVer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.BtnVer.UseAccentColor = false;
+            this.BtnVer.UseVisualStyleBackColor = true;
+            // 
+            // BtnActualizar
+            // 
+            this.BtnActualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnActualizar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.BtnActualizar.Depth = 0;
+            this.BtnActualizar.HighEmphasis = true;
+            this.BtnActualizar.Icon = global::Etiquetas.Properties.Resources.icons8_editar_64;
+            this.BtnActualizar.Location = new System.Drawing.Point(391, 6);
+            this.BtnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.BtnActualizar.Size = new System.Drawing.Size(137, 36);
+            this.BtnActualizar.TabIndex = 1;
+            this.BtnActualizar.Text = "Actualizar";
+            this.BtnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.BtnActualizar.UseAccentColor = false;
+            this.BtnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.BtnEliminar.Depth = 0;
+            this.BtnEliminar.HighEmphasis = true;
+            this.BtnEliminar.Icon = global::Etiquetas.Properties.Resources.icons8_basura_64;
+            this.BtnEliminar.Location = new System.Drawing.Point(678, 6);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.BtnEliminar.Size = new System.Drawing.Size(116, 36);
+            this.BtnEliminar.TabIndex = 2;
+            this.BtnEliminar.Text = "Eliminar";
+            this.BtnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnEliminar.UseAccentColor = false;
+            this.BtnEliminar.UseVisualStyleBackColor = true;
             // 
             // PageDestinos
             // 
@@ -731,38 +738,6 @@
             this.PageDestinos.TabIndex = 5;
             this.PageDestinos.Text = "PageDestinos";
             this.PageDestinos.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.BtnGuardar, 2, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(14, 158);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(898, 53);
-            this.tableLayoutPanel3.TabIndex = 6;
-            // 
-            // materialCard3
-            // 
-            this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard3.Controls.Add(this.tableLayoutPanel6);
-            this.materialCard3.Depth = 0;
-            this.materialCard3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(0, 393);
-            this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard3.Name = "materialCard3";
-            this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(946, 100);
-            this.materialCard3.TabIndex = 0;
             // 
             // materialCard4
             // 
@@ -780,85 +755,19 @@
             this.materialCard4.Size = new System.Drawing.Size(946, 293);
             this.materialCard4.TabIndex = 1;
             // 
-            // materialCard5
+            // dataGridView1
             // 
-            this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard5.Controls.Add(this.tableLayoutPanel4);
-            this.materialCard5.Depth = 0;
-            this.materialCard5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard5.Location = new System.Drawing.Point(0, 0);
-            this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard5.Name = "materialCard5";
-            this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard5.Size = new System.Drawing.Size(946, 100);
-            this.materialCard5.TabIndex = 2;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.TxtDestinoDestino, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.BtnGuardarDestino, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(14, 14);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(918, 72);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // TxtDestinoDestino
-            // 
-            this.TxtDestinoDestino.AnimateReadOnly = false;
-            this.TxtDestinoDestino.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TxtDestinoDestino.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.TxtDestinoDestino.Depth = 0;
-            this.TxtDestinoDestino.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtDestinoDestino.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TxtDestinoDestino.HideSelection = true;
-            this.TxtDestinoDestino.Hint = "DESTINO";
-            this.TxtDestinoDestino.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_activar_el_modo_avión_50;
-            this.TxtDestinoDestino.Location = new System.Drawing.Point(3, 3);
-            this.TxtDestinoDestino.MaxLength = 299;
-            this.TxtDestinoDestino.MouseState = MaterialSkin.MouseState.OUT;
-            this.TxtDestinoDestino.Name = "TxtDestinoDestino";
-            this.TxtDestinoDestino.PasswordChar = '\0';
-            this.TxtDestinoDestino.PrefixSuffixText = null;
-            this.TxtDestinoDestino.ReadOnly = false;
-            this.TxtDestinoDestino.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtDestinoDestino.SelectedText = "";
-            this.TxtDestinoDestino.SelectionLength = 0;
-            this.TxtDestinoDestino.SelectionStart = 0;
-            this.TxtDestinoDestino.ShortcutsEnabled = true;
-            this.TxtDestinoDestino.Size = new System.Drawing.Size(728, 48);
-            this.TxtDestinoDestino.TabIndex = 0;
-            this.TxtDestinoDestino.TabStop = false;
-            this.TxtDestinoDestino.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TxtDestinoDestino.TrailingIcon = null;
-            this.TxtDestinoDestino.UseSystemPasswordChar = false;
-            // 
-            // BtnGuardarDestino
-            // 
-            this.BtnGuardarDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnGuardarDestino.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnGuardarDestino.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BtnGuardarDestino.Depth = 0;
-            this.BtnGuardarDestino.HighEmphasis = true;
-            this.BtnGuardarDestino.Icon = global::Etiquetas.Properties.Resources.icons8_guardar_50;
-            this.BtnGuardarDestino.Location = new System.Drawing.Point(768, 18);
-            this.BtnGuardarDestino.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnGuardarDestino.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnGuardarDestino.Name = "BtnGuardarDestino";
-            this.BtnGuardarDestino.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnGuardarDestino.Size = new System.Drawing.Size(116, 36);
-            this.BtnGuardarDestino.TabIndex = 1;
-            this.BtnGuardarDestino.Text = "GUARDAR";
-            this.BtnGuardarDestino.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.BtnGuardarDestino.UseAccentColor = false;
-            this.BtnGuardarDestino.UseVisualStyleBackColor = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(14, 86);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(918, 193);
+            this.dataGridView1.TabIndex = 2;
             // 
             // tableLayoutPanel5
             // 
@@ -925,19 +834,100 @@
             this.BtnDestinoBuscar.UseAccentColor = false;
             this.BtnDestinoBuscar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // materialCard5
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 86);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(918, 193);
-            this.dataGridView1.TabIndex = 2;
+            this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard5.Controls.Add(this.tableLayoutPanel4);
+            this.materialCard5.Depth = 0;
+            this.materialCard5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard5.Location = new System.Drawing.Point(0, 0);
+            this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard5.Name = "materialCard5";
+            this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard5.Size = new System.Drawing.Size(946, 100);
+            this.materialCard5.TabIndex = 2;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.TxtDestinoingresar, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.BtnGuardarDestino, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(14, 14);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(918, 72);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // TxtDestinoingresar
+            // 
+            this.TxtDestinoingresar.AnimateReadOnly = false;
+            this.TxtDestinoingresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TxtDestinoingresar.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TxtDestinoingresar.Depth = 0;
+            this.TxtDestinoingresar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtDestinoingresar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtDestinoingresar.HideSelection = true;
+            this.TxtDestinoingresar.Hint = "DESTINO";
+            this.TxtDestinoingresar.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_activar_el_modo_avión_50;
+            this.TxtDestinoingresar.Location = new System.Drawing.Point(3, 3);
+            this.TxtDestinoingresar.MaxLength = 299;
+            this.TxtDestinoingresar.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtDestinoingresar.Name = "TxtDestinoingresar";
+            this.TxtDestinoingresar.PasswordChar = '\0';
+            this.TxtDestinoingresar.PrefixSuffixText = null;
+            this.TxtDestinoingresar.ReadOnly = false;
+            this.TxtDestinoingresar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtDestinoingresar.SelectedText = "";
+            this.TxtDestinoingresar.SelectionLength = 0;
+            this.TxtDestinoingresar.SelectionStart = 0;
+            this.TxtDestinoingresar.ShortcutsEnabled = true;
+            this.TxtDestinoingresar.Size = new System.Drawing.Size(728, 48);
+            this.TxtDestinoingresar.TabIndex = 0;
+            this.TxtDestinoingresar.TabStop = false;
+            this.TxtDestinoingresar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtDestinoingresar.TrailingIcon = null;
+            this.TxtDestinoingresar.UseSystemPasswordChar = false;
+            // 
+            // BtnGuardarDestino
+            // 
+            this.BtnGuardarDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnGuardarDestino.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnGuardarDestino.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.BtnGuardarDestino.Depth = 0;
+            this.BtnGuardarDestino.HighEmphasis = true;
+            this.BtnGuardarDestino.Icon = global::Etiquetas.Properties.Resources.icons8_guardar_50;
+            this.BtnGuardarDestino.Location = new System.Drawing.Point(768, 18);
+            this.BtnGuardarDestino.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnGuardarDestino.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnGuardarDestino.Name = "BtnGuardarDestino";
+            this.BtnGuardarDestino.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.BtnGuardarDestino.Size = new System.Drawing.Size(116, 36);
+            this.BtnGuardarDestino.TabIndex = 1;
+            this.BtnGuardarDestino.Text = "GUARDAR";
+            this.BtnGuardarDestino.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnGuardarDestino.UseAccentColor = false;
+            this.BtnGuardarDestino.UseVisualStyleBackColor = true;
+            // 
+            // materialCard3
+            // 
+            this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.tableLayoutPanel6);
+            this.materialCard3.Depth = 0;
+            this.materialCard3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard3.Location = new System.Drawing.Point(0, 393);
+            this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard3.Name = "materialCard3";
+            this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard3.Size = new System.Drawing.Size(946, 100);
+            this.materialCard3.TabIndex = 0;
             // 
             // tableLayoutPanel6
             // 
@@ -955,6 +945,36 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(918, 72);
             this.tableLayoutPanel6.TabIndex = 2;
+            // 
+            // TxtDestinoEditar
+            // 
+            this.TxtDestinoEditar.AnimateReadOnly = false;
+            this.TxtDestinoEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TxtDestinoEditar.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TxtDestinoEditar.Depth = 0;
+            this.TxtDestinoEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtDestinoEditar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtDestinoEditar.HideSelection = true;
+            this.TxtDestinoEditar.Hint = "EDITAR DESTINO";
+            this.TxtDestinoEditar.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_editar_64;
+            this.TxtDestinoEditar.Location = new System.Drawing.Point(3, 3);
+            this.TxtDestinoEditar.MaxLength = 299;
+            this.TxtDestinoEditar.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtDestinoEditar.Name = "TxtDestinoEditar";
+            this.TxtDestinoEditar.PasswordChar = '\0';
+            this.TxtDestinoEditar.PrefixSuffixText = null;
+            this.TxtDestinoEditar.ReadOnly = false;
+            this.TxtDestinoEditar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtDestinoEditar.SelectedText = "";
+            this.TxtDestinoEditar.SelectionLength = 0;
+            this.TxtDestinoEditar.SelectionStart = 0;
+            this.TxtDestinoEditar.ShortcutsEnabled = true;
+            this.TxtDestinoEditar.Size = new System.Drawing.Size(544, 48);
+            this.TxtDestinoEditar.TabIndex = 3;
+            this.TxtDestinoEditar.TabStop = false;
+            this.TxtDestinoEditar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtDestinoEditar.TrailingIcon = global::Etiquetas.Properties.Resources.icons8_activar_el_modo_avión_50;
+            this.TxtDestinoEditar.UseSystemPasswordChar = false;
             // 
             // BtnDestinoEliminar
             // 
@@ -996,35 +1016,15 @@
             this.BtnDestinoActualizar.UseAccentColor = false;
             this.BtnDestinoActualizar.UseVisualStyleBackColor = true;
             // 
-            // TxtDestinoEditar
+            // PageConfig
             // 
-            this.TxtDestinoEditar.AnimateReadOnly = false;
-            this.TxtDestinoEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TxtDestinoEditar.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.TxtDestinoEditar.Depth = 0;
-            this.TxtDestinoEditar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtDestinoEditar.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TxtDestinoEditar.HideSelection = true;
-            this.TxtDestinoEditar.Hint = "EDITAR DESTINO";
-            this.TxtDestinoEditar.LeadingIcon = global::Etiquetas.Properties.Resources.icons8_editar_64;
-            this.TxtDestinoEditar.Location = new System.Drawing.Point(3, 3);
-            this.TxtDestinoEditar.MaxLength = 299;
-            this.TxtDestinoEditar.MouseState = MaterialSkin.MouseState.OUT;
-            this.TxtDestinoEditar.Name = "TxtDestinoEditar";
-            this.TxtDestinoEditar.PasswordChar = '\0';
-            this.TxtDestinoEditar.PrefixSuffixText = null;
-            this.TxtDestinoEditar.ReadOnly = false;
-            this.TxtDestinoEditar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtDestinoEditar.SelectedText = "";
-            this.TxtDestinoEditar.SelectionLength = 0;
-            this.TxtDestinoEditar.SelectionStart = 0;
-            this.TxtDestinoEditar.ShortcutsEnabled = true;
-            this.TxtDestinoEditar.Size = new System.Drawing.Size(544, 48);
-            this.TxtDestinoEditar.TabIndex = 3;
-            this.TxtDestinoEditar.TabStop = false;
-            this.TxtDestinoEditar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TxtDestinoEditar.TrailingIcon = global::Etiquetas.Properties.Resources.icons8_activar_el_modo_avión_50;
-            this.TxtDestinoEditar.UseSystemPasswordChar = false;
+            this.PageConfig.ImageKey = "icons8-settings-50.png";
+            this.PageConfig.Location = new System.Drawing.Point(4, 31);
+            this.PageConfig.Name = "PageConfig";
+            this.PageConfig.Size = new System.Drawing.Size(946, 493);
+            this.PageConfig.TabIndex = 2;
+            this.PageConfig.Text = "Configuracion";
+            this.PageConfig.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -1046,28 +1046,28 @@
             this.PageIngreso.ResumeLayout(false);
             this.PageIngreso.PerformLayout();
             this.materialCard2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.materialCard1.ResumeLayout(false);
             this.PageConsulta.ResumeLayout(false);
             this.PageConsulta.PerformLayout();
-            this.CardOpciones.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.CardData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImgTablaData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaData)).EndInit();
             this.CardFiltros.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.CardOpciones.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.PageDestinos.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.materialCard3.ResumeLayout(false);
             this.materialCard4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.materialCard5.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.materialCard3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
@@ -1111,7 +1111,7 @@
         private MaterialSkin.Controls.MaterialCard materialCard5;
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private MaterialSkin.Controls.MaterialTextBox2 TxtDestinoDestino;
+        private MaterialSkin.Controls.MaterialTextBox2 TxtDestinoingresar;
         private MaterialSkin.Controls.MaterialButton BtnGuardarDestino;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private MaterialSkin.Controls.MaterialTextBox2 TxtDestinoBuscar;
