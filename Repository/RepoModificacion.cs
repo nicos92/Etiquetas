@@ -23,9 +23,6 @@ namespace Etiquetas.Repository
             {
                  using var cmd = new NpgsqlCommand(insert, conn);
                  await cmd.ExecuteNonQueryAsync();
-
-                
-
             }
             catch (NpgsqlException e)
             {
@@ -72,80 +69,26 @@ namespace Etiquetas.Repository
             Utils.Util.CartelConfirmInfo("ingreso correcto", "insercion");
 
         }
-        public static int IngresarModificacion(string fecha, string numero, string destino, string tipo, string descripcion)
-        {
-            int result = 0;
-            string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', '{tipo}', '{descripcion}');";
+    
 
-            try
-            {
-                using (NpgsqlCommand cmd = new(insert, BDNpgsql.Instance.GetConnection))
-                {
-                    result = cmd.ExecuteNonQuery();
-                    
-                }
+   
 
-                BDNpgsql.Instance.CloseConnection();
-            }
-            catch (NpgsqlException e)
-            {
-                BDNpgsql.Instance.CloseConnection();
-                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
-            }
-            catch (InvalidOperationException e)
-            {
-                BDNpgsql.Instance.CloseConnection();
-                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
-            }
-
-            return result;
-        }
-
-        public static int IngresarModificacionDoble(string fecha, string numero, string destino, string descripcion)
-        {
-            int result = 0;
-            string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', 'INTERNA', '{descripcion}')," +
-                $"('{fecha}', '{numero}', '{destino}', 'EXTERNA', '{descripcion}');";
-
-            try
-            {
-                using (NpgsqlCommand cmd = new(insert, BDNpgsql.Instance.GetConnection))
-                {
-                    result = cmd.ExecuteNonQuery();
-                }
-
-                BDNpgsql.Instance.CloseConnection();
-            }
-            catch (NpgsqlException e)
-            {
-                BDNpgsql.Instance.CloseConnection();
-                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
-            }
-            catch (InvalidOperationException e)
-            {
-                BDNpgsql.Instance.CloseConnection();
-                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
-            }
-
-            return result;
-        }
-
-        public static List<Modificacion> GetModificacionList(string tipo, string destino, string numero)
+        public static async Task<List<Modificacion>> GetModificacionListAsync(string tipo, string destino, string numero)
         {
 
             List<Modificacion> modificacions = [];
 
             try
             {
-                string list1 = "select id, fecha, tipo, destino, numero, descripcion from etiquetasmod where date_delete is null and tipo like '%" + tipo +"%' and destino like '%"+ destino +"%' and numero like '%"+ numero + "%' ORDER BY id DESC ;";
+                string list1 = "select id, fecha, tipo, destino, numero, descripcion from etiquetasmod where date_delete is null and tipo like '%" + tipo + "%' and destino like '%" + destino + "%' and numero like '%" + numero + "%' ORDER BY id DESC ;";
 
 
-               
 
-                using NpgsqlCommand cmd = new(list1, BDNpgsql.Instance.GetConnection);
-                using NpgsqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                using NpgsqlCommand cmd = new(list1, BDNpgsql.Instance.GetConnectionAsync);
+                using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
                 {
                     Modificacion modificacion = new()
                     {
@@ -184,35 +127,48 @@ namespace Etiquetas.Repository
             return result;
         }
 
-        public static int DeleteLogicoModificacion()
+        public static async Task DeleteLogicoModificacionAsync(int id)
         {
-            int result = 0;
+            
+
+            string insert = $"delete from etiquetasmod where id="+id+";";
 
             try
             {
-
+                using var cmd = new NpgsqlCommand(insert, BDNpgsql.Instance.GetConnectionAsync);
+                await cmd.ExecuteNonQueryAsync();
+                BDNpgsql.Instance.CloseConnection();
             }
             catch (NpgsqlException e)
             {
-
-                Console.WriteLine(e.Message);
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
             }
-            return result;
+            catch (InvalidOperationException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
+            }
+
+            Utils.Util.CartelConfirmInfo("Eliminacion correcta", "ELIMINACION");
+            
         }
 
-        internal static List<string> GetListDestinos(string text)
+   
+
+        public async static Task<List<string>> GetListDestinosAsync(string text)
         {
             List<string> destinos = [];
 
             try
             {
 
-                string list = "select destino from etiquetasmod where date_delete is null and tipo like '%"+GetTipo(text)+"' group by destino;";
+                string list = "select destino from etiquetasmod where date_delete is null and tipo like '%" + GetTipo(text) + "' group by destino;";
 
                 NpgsqlCommand cmd = new(list, BDNpgsql.Instance.GetConnection);
-                using NpgsqlDataReader reader = cmd.ExecuteReader();
+                using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string destino = reader.GetString(0);
                     destinos.Add(destino);
@@ -227,28 +183,22 @@ namespace Etiquetas.Repository
             return destinos;
         }
 
-        private static string GetTipo(string text)
-        {
-            if (text == "AMBOS")
-            {
-                return "ERNA";
-            }
-            return text;
-        }
 
-        internal static IEnumerable<object> GetListNumeros(string tipo, string destino)
+
+
+        public static async Task<List<string>> GetListNumerosAsync(string tipo, string destino)
         {
             List<string> numeros = [];
 
             try
             {
-                string list = "select numero from etiquetasmod where date_delete is null and tipo like '%"+GetTipo(tipo)+"'  and destino = '"+ destino +"' group by numero;";
+                string list = "select numero from etiquetasmod where date_delete is null and tipo like '%" + GetTipo(tipo) + "'  and destino = '" + destino + "' group by numero;";
 
 
-                NpgsqlCommand cmd = new(list, BDNpgsql.Instance.GetConnection);
-                using NpgsqlDataReader reader = cmd.ExecuteReader();
+                NpgsqlCommand cmd = new(list, BDNpgsql.Instance.GetConnectionAsync);
+                using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string numero = reader.GetString(0).ToUpper();
                     numeros.Add(numero);
@@ -261,6 +211,15 @@ namespace Etiquetas.Repository
             return numeros;
         }
 
-        
+        private static string GetTipo(string text)
+        {
+            if (text == "AMBOS")
+            {
+                return "ERNA";
+            }
+            return text;
+        }
+
+
     }
 }

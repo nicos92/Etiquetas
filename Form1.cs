@@ -46,17 +46,6 @@ namespace Etiquetas
             string tipo = ComboBoxTipo.Text;
             string descripcion = TxtModificacion.Text.Trim();
 
-            //int result = 0;
-            /*
-            if (tipo == "AMBOS")
-            {
-                result = ServModificacion.IngresarModificacionDoble(fecha, numero, destino, descripcion);
-            }
-            else
-            {
-                result = ServModificacion.IngresarModificacion(fecha, numero, destino, tipo, descripcion);
-            }
-            */
             if (tipo == "AMBOS")
             {
                ServModificacion.IngresarModificacionDobleAsync(fecha, numero, destino, descripcion);
@@ -66,29 +55,34 @@ namespace Etiquetas
                ServModificacion.IngresarModificacionAsync(fecha, numero, destino, tipo, descripcion);
             }
 
-            //MostrarResult(result);
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private async void BtnBuscar_Click(object sender, EventArgs e)
         {
             
             string tipo = ComboTipo.Text != "INTERNA" && ComboTipo.Text != "EXTERNA" ? "" : ComboTipo.Text;
             string destino = ComboDestino.Text.ToUpper();
             string numero = ComboNumero.Text.ToUpper();
-            TablaData.DataSource = ServModificacion.GetModificacionList(tipo, destino, numero);
-            ImgTablaData.Visible = false;
-            TablaData.Visible = true;
+            //TablaData.DataSource = ServModificacion.GetModificacionList(tipo, destino, numero);
+            TablaData.DataSource = await ServModificacion.GetModificacionListAsync(tipo,destino, numero);
+            IntercambioVistaTablaData(false);
             Util.CartelConfirmInfo("Carga Completa", "Busqueda");
+        }
+
+        public void IntercambioVistaTablaData(bool vista)
+        {
+            ImgTablaData.Visible = vista;
+            TablaData.Visible = !ImgTablaData.Visible;
         }
 
 
 
-        private void CargarDestinos()
+        private async void CargarDestinos()
         {
             ComboDestino.Items.Clear();
             if (ComboDestino.Items.Count == 0)
             {
-                foreach (var item in ServModificacion.GetListDestinos(ComboTipo.Text))
+                foreach (var item in await ServModificacion.GetListDestinosAsync(ComboTipo.Text))
                 {
                     ComboDestino.Items.Add(item);
                 };
@@ -97,31 +91,19 @@ namespace Etiquetas
 
 
 
-        private void CargarNumeros(string tipo, string destino)
+        private async void CargarNumeros(string tipo, string destino)
         {
             ComboNumero.Items.Clear();
             if (ComboNumero.Items.Count == 0)
             {
-                foreach (var item in ServModificacion.GetListNumeros(tipo, destino))
+                foreach (var item in await ServModificacion.GetListNumerosAsync(tipo, destino))
                 {
                     ComboNumero.Items.Add(item);
                 };
             }
         }
 
-        private void MostrarResult(int result)
-        {
-            
-            if (result > 0)
-            {
-                Util.CartelConfirmInfo("Ingreso correcto", "INGRESO");
-                CleanFormIngreso();
-            }
-            else
-            {
-                Util.CartelConfirmInfo("No se realizo el ingreso", "INGRESO");
-            }
-        }
+        
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -187,8 +169,21 @@ namespace Etiquetas
             CargarNumeros(ComboTipo.Text, ComboDestino.Text);
         }
 
-      
+        private async void BtnEliminar_Click(object sender, EventArgs e)
+        {
 
-        
+            DialogResult dresult = Util.CartelConfirmWarn("Estas Seguro que querés eliminar?", "ELIMINACION");
+
+            if (dresult == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(TablaData.CurrentRow.Cells[0].Value);
+
+                await ServModificacion.DeleteLogicoModificacionAsync(id);
+                IntercambioVistaTablaData(true);
+            }
+
+            
+
+        }
     }
 }

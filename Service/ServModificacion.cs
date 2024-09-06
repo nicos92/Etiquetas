@@ -2,6 +2,7 @@
 using Etiquetas.Repository;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -13,39 +14,29 @@ namespace Etiquetas.Service
     {
         
 
-        public static int IngresarModificacion(string fecha, string numero, string destino, string tipo, string descripcion)
-        {
-            return RepoModificacion.IngresarModificacion(fecha, numero, destino, tipo, descripcion);
-        }
+        
 
-        public static int IngresarModificacionDoble(string fecha, string numero, string destino,  string descripcion)
-        {
-            return RepoModificacion.IngresarModificacionDoble(fecha, numero, destino,  descripcion);
-        }
-        public static List<Modificacion> GetModificacionList(string tipo, string destino, string numero)
-        {
-            return RepoModificacion.GetModificacionList(tipo, destino, numero);
-        }
+        
+        
 
         public static int UpdateModificacion()
         {
             return RepoModificacion.UpdateModificacion();
         }
 
-        public static int DeleteLogicoModificacion()
+        public static async Task DeleteLogicoModificacionAsync(int id)
         {
-            return RepoModificacion.DeleteLogicoModificacion();
+            await RepoModificacion.DeleteLogicoModificacionAsync(id);
         }
 
-        internal static List<string> GetListDestinos(string text)
+      
+
+        internal async static Task<List<string>> GetListDestinosAsync(string text)
         {
-            return RepoModificacion.GetListDestinos(text);
+            return await RepoModificacion.GetListDestinosAsync(text);
         }
 
-        internal static IEnumerable<object> GetListNumeros(string tipo, string destino)
-        {
-            return RepoModificacion.GetListNumeros(tipo, destino);
-        }
+       
 
         internal static async void IngresarModificacionDobleAsync(string fecha, string numero, string destino, string descripcion)
         {
@@ -55,6 +46,16 @@ namespace Etiquetas.Service
         internal static async void  IngresarModificacionAsync(string fecha, string numero, string destino, string tipo, string descripcion)
         {
             await RepoModificacion.InsertDataAsync(fecha, numero, destino, tipo, descripcion);
+        }
+
+        internal static async Task<List<Modificacion>> GetModificacionListAsync(string tipo, string destino, string numero)
+        {
+            return await RepoModificacion.GetModificacionListAsync(tipo,destino, numero);
+        }
+
+        internal static async Task<List<String>> GetListNumerosAsync(string tipo, string destino)
+        {
+            return await RepoModificacion.GetListNumerosAsync(tipo, destino);
         }
     }
 }
