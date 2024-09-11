@@ -19,14 +19,14 @@ namespace Etiquetas.Service
         
         
 
-        public static int UpdateModificacion()
+        public static async Task UpdateModificacionAsync(string id, string fecha, string tipo, string destino, string numero, string descipcion)
         {
-            return RepoModificacion.UpdateModificacion();
+             await RepoModificacion.UpdateModificacionAsync(id, fecha, tipo, destino, numero, descipcion);
         }
 
-        public static async Task DeleteLogicoModificacionAsync(int id)
+        public static async Task<int> DeleteLogicoModificacionAsync(int id)
         {
-            await RepoModificacion.DeleteLogicoModificacionAsync(id);
+            return await RepoModificacion.DeleteLogicoModificacionAsync(id);
         }
 
       
@@ -38,19 +38,24 @@ namespace Etiquetas.Service
 
        
 
-        internal static async void IngresarModificacionDobleAsync(string fecha, string numero, string destino, string descripcion)
+        internal static async Task<int> IngresarModificacionDobleAsync(string fecha, string numero, string destino, string descripcion)
         {
-            await RepoModificacion.InsertDateDobleAsync(fecha, numero, destino, descripcion);
+            return await RepoModificacion.InsertDateDobleAsync(fecha, numero, destino, descripcion);
         }
 
-        internal static async void  IngresarModificacionAsync(string fecha, string numero, string destino, string tipo, string descripcion)
+        internal static async Task<int> IngresarModificacionAsync(string fecha, string numero, string destino, string tipo, string descripcion)
         {
-            await RepoModificacion.InsertDataAsync(fecha, numero, destino, tipo, descripcion);
+              return await RepoModificacion.InsertDataAsync(fecha, numero, destino, tipo, descripcion);
         }
 
-        internal static async Task<List<Modificacion>> GetModificacionListAsync(string tipo, string destino, string numero)
+        internal static  async Task<List<string[]>> GetModificacionListAsync(string tipo, string destino, string numero)
         {
             return await RepoModificacion.GetModificacionListAsync(tipo,destino, numero);
+        }
+
+        internal static async Task<int> GetCountModificacionListAsync(string tipo, string destino, string numero)
+        {
+            return await RepoModificacion.GetCountModificacionListAsync(tipo, destino, numero);
         }
 
         internal static async Task<List<String>> GetListNumerosAsync(string tipo, string destino)

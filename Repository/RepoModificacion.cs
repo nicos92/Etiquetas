@@ -13,16 +13,17 @@ namespace Etiquetas.Repository
     public class RepoModificacion
     {
 
-        public static async Task InsertDataAsync(string fecha, string numero, string destino, string tipo, string descripcion)
+        public static async Task<int> InsertDataAsync(string fecha, string numero, string destino, string tipo, string descripcion)
         {
-            var conn = BDNpgsql.Instance.GetConnectionAsync;
+            int result = 0;
+            var conn =await  BDNpgsql.Instance.GetConnectionAsync();
 
             string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', '{tipo}', '{descripcion}');";
 
             try
             {
-                 using var cmd = new NpgsqlCommand(insert, conn);
-                 await cmd.ExecuteNonQueryAsync();
+                using var cmd = new NpgsqlCommand(insert, conn);
+                result = await cmd.ExecuteNonQueryAsync();
             }
             catch (NpgsqlException e)
             {
@@ -36,20 +37,145 @@ namespace Etiquetas.Repository
             }
             BDNpgsql.Instance.CloseConnection();
 
-            Utils.Util.CartelConfirmInfo("ingreso correcto", "insercion");
-            
+            return result;
+
         }
 
-        public static async Task InsertDateDobleAsync(string fecha, string numero, string destino, string descripcion)
+        public static async Task<int> InsertDateDobleAsync(string fecha, string numero, string destino, string descripcion)
         {
-            
 
+            int result = 0;
             string insert = $"INSERT INTO etiquetasmod (fecha, numero, destino, tipo, descripcion) VALUES ('{fecha}', '{numero}', '{destino}', 'INTERNA', '{descripcion}')," +
                 $"('{fecha}', '{numero}', '{destino}', 'EXTERNA', '{descripcion}');";
 
             try
             {
-                 using (NpgsqlCommand cmd = new(insert, BDNpgsql.Instance.GetConnectionAsync))
+                using (NpgsqlCommand cmd = new(insert, await BDNpgsql.Instance.GetConnectionAsync()))
+                {
+                    result = await cmd.ExecuteNonQueryAsync();
+                }
+
+                BDNpgsql.Instance.CloseConnection();
+            }
+            catch (NpgsqlException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+                
+            }
+            catch (InvalidOperationException e)
+            {
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
+                
+            }
+            return result;
+        }
+
+
+
+
+        public static async Task<List<string[]>> GetModificacionListAsync(string tipo, string destino, string numero)
+        {
+
+            //List<Modificacion> modificacions = [];
+            List<string[]> mistrings = new List<string[]>();
+
+            try
+            {
+                string list1 = "select id, fecha, tipo, destino, numero, descripcion from etiquetasmod where date_delete is null and tipo like '%" + tipo + "%' and destino like '%" + destino + "%' and numero like '%" + numero + "%' ORDER BY id DESC ;";
+
+
+
+
+                using NpgsqlCommand cmd = new(list1, await BDNpgsql.Instance.GetConnectionAsync());
+                await using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    string[] list2 = new string[6];
+                    
+                    Modificacion modificacion = new()
+                    {
+                        Id= reader.GetInt64(0),
+                        Fecha = reader.GetDateTime(1).ToString("yyyy-MM-dd"),
+                        Tipo = reader.GetString(2),
+                        Destino = reader.GetString(3),
+                        Numero = reader.GetString(4),
+                        Descripcion = reader.GetString(5)
+                    };
+                    
+
+                    
+                        list2[0] = modificacion.Id.ToString();
+                    list2[1] = modificacion.Fecha;
+
+                    list2[2] = modificacion.Tipo;
+                    list2[3] = modificacion.Destino;
+                    list2[4] = modificacion.Numero;
+                    list2[5] = modificacion.Descripcion;
+
+
+                    mistrings.Add(list2);
+
+                    //modificacions.Add(modificacion);
+                }
+                BDNpgsql.Instance.CloseConnection();
+
+
+            }
+            catch (NpgsqlException e)
+            {
+
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+                
+            }
+            return mistrings;
+        }
+
+        public static async Task<int> GetCountModificacionListAsync(string tipo, string destino, string numero)
+        {
+            int count = 0;
+
+            try
+            {
+                string list1 = "select count(id) from etiquetasmod where date_delete is null and tipo like '%" + tipo + "%' and destino like '%" + destino + "%' and numero like '%" + numero + "%' ;";
+
+
+
+
+                using NpgsqlCommand cmd = new(list1, await BDNpgsql.Instance.GetConnectionAsync());
+                using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    count = reader.GetInt32(0);
+                        
+                        }
+                BDNpgsql.Instance.CloseConnection();
+
+            }
+            catch (NpgsqlException e)
+            {
+
+                BDNpgsql.Instance.CloseConnection();
+                System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+
+            }
+            return count;
+        }
+
+        public static async Task UpdateModificacionAsync(string id, string fecha, string tipo, string destino, string numero, string descripcion)
+        {
+
+
+
+
+            string update = $"update etiquetasmod set fecha ='" + fecha + "',   tipo ='" + tipo + "', destino='" + destino + "', numero='" + numero + "', descripcion='" + descripcion + "', date_modify=current_date, time_modify=current_time where id=" + id + ";";
+            try
+            {
+                using (NpgsqlCommand cmd = new(update, await BDNpgsql.Instance.GetConnectionAsync()))
                 {
                     await cmd.ExecuteNonQueryAsync();
                 }
@@ -60,83 +186,29 @@ namespace Etiquetas.Repository
             {
                 BDNpgsql.Instance.CloseConnection();
                 System.Windows.Forms.MessageBox.Show("Error en base de datos SQL EXCEPTION", e.Message);
+                return;
             }
             catch (InvalidOperationException e)
             {
                 BDNpgsql.Instance.CloseConnection();
                 System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
+                return;
+
             }
-            Utils.Util.CartelConfirmInfo("ingreso correcto", "insercion");
+            Utils.Util.CartelConfirmInfo("Actualización Correcta", "ACTUALIZACION");
 
         }
-    
 
-   
-
-        public static async Task<List<Modificacion>> GetModificacionListAsync(string tipo, string destino, string numero)
-        {
-
-            List<Modificacion> modificacions = [];
-
-            try
-            {
-                string list1 = "select id, fecha, tipo, destino, numero, descripcion from etiquetasmod where date_delete is null and tipo like '%" + tipo + "%' and destino like '%" + destino + "%' and numero like '%" + numero + "%' ORDER BY id DESC ;";
-
-
-
-
-                using NpgsqlCommand cmd = new(list1, BDNpgsql.Instance.GetConnectionAsync);
-                using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
-
-                while (await reader.ReadAsync())
-                {
-                    Modificacion modificacion = new()
-                    {
-                        Id = reader.GetInt32(0),
-                        Fecha = reader.GetDateTime(1).ToString("yyyy-MM-dd"),
-                        Tipo = reader.GetString(2),
-                        Destino = reader.GetString(3),
-                        Numero = reader.GetString(4),
-                        Descripcion = reader.GetString(5)
-                    };
-
-                    modificacions.Add(modificacion);
-                }
-
-            }
-            catch (NpgsqlException e)
-            {
-
-                Console.WriteLine(e.Message);
-            }
-            return modificacions;
-        }
-
-        public static int UpdateModificacion()
+        public static async Task<int> DeleteLogicoModificacionAsync(int id)
         {
             int result = 0;
-            try
-            {
-                string update = $"update modificacion set";
-            }
-            catch (NpgsqlException e)
-            {
 
-                Console.WriteLine(e.Message);
-            }
-            return result;
-        }
-
-        public static async Task DeleteLogicoModificacionAsync(int id)
-        {
-            
-
-            string insert = $"delete from etiquetasmod where id="+id+";";
+            string insert = $"update etiquetasmod set date_delete=current_date, time_delete=current_time where id=" + id + ";";
 
             try
             {
-                using var cmd = new NpgsqlCommand(insert, BDNpgsql.Instance.GetConnectionAsync);
-                await cmd.ExecuteNonQueryAsync();
+                using var cmd = new NpgsqlCommand(insert, await BDNpgsql.Instance.GetConnectionAsync());
+                result = await cmd.ExecuteNonQueryAsync();
                 BDNpgsql.Instance.CloseConnection();
             }
             catch (NpgsqlException e)
@@ -150,11 +222,11 @@ namespace Etiquetas.Repository
                 System.Windows.Forms.MessageBox.Show("Error en base de datos INVALID OPERATION", e.Message);
             }
 
-            Utils.Util.CartelConfirmInfo("Eliminacion correcta", "ELIMINACION");
-            
+            return result;
+
         }
 
-   
+
 
         public async static Task<List<string>> GetListDestinosAsync(string text)
         {
@@ -163,9 +235,9 @@ namespace Etiquetas.Repository
             try
             {
 
-                string list = "select destino from etiquetasmod where date_delete is null and tipo like '%" + GetTipo(text) + "' group by destino;";
+                string list = "select destino from etiquetasmod where date_delete is null and tipo like '%" + GetTipo(text) + "%' group by destino;";
 
-                NpgsqlCommand cmd = new(list, BDNpgsql.Instance.GetConnection);
+                NpgsqlCommand cmd = new(list,await BDNpgsql.Instance.GetConnectionAsync());
                 using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
@@ -195,7 +267,7 @@ namespace Etiquetas.Repository
                 string list = "select numero from etiquetasmod where date_delete is null and tipo like '%" + GetTipo(tipo) + "'  and destino = '" + destino + "' group by numero;";
 
 
-                NpgsqlCommand cmd = new(list, BDNpgsql.Instance.GetConnectionAsync);
+                NpgsqlCommand cmd = new(list, await BDNpgsql.Instance.GetConnectionAsync());
                 using NpgsqlDataReader reader = await cmd.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())

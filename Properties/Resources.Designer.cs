@@ -133,6 +133,26 @@ namespace Etiquetas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_loading {
+            get {
+                object obj = ResourceManager.GetObject("icons8-loading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_loading_infinity {
+            get {
+                object obj = ResourceManager.GetObject("icons8-loading-infinity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_una_página_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-una-página-48", resourceCulture);
@@ -166,6 +186,16 @@ namespace Etiquetas.Properties {
         internal static System.Drawing.Bitmap pexels_pixabay_65911 {
             get {
                 object obj = ResourceManager.GetObject("pexels-pixabay-65911", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap R {
+            get {
+                object obj = ResourceManager.GetObject("R", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -14,18 +14,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Etiquetas.vistas;
+using System.Threading;
+using Etiquetas.Singleton;
+using Etiquetas.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Etiquetas
 {
     public partial class FormMain : MaterialForm
     {
+        private List<string[]> _lista;
         public FormMain()
         {
             InitializeComponent();
-            CargaTema();
+            CargaTemaRed();
+            BckTablaData.WorkerReportsProgress = true;
+
+
         }
 
-        public void CargaTema()
+        public void CargaTemaRed()
         {
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -37,42 +46,127 @@ namespace Etiquetas
 
 
 
-        private void BtnGuardar_Click(object sender, EventArgs e)
+        private async void BtnGuardar_Click(object sender, EventArgs e)
         {
-            
             string fecha = TxtFecha.Text.Trim();
             string numero = TxtNumero.Text.Trim().ToUpper();
             string destino = TxtDestino.Text.Trim().ToUpper();
             string tipo = ComboBoxTipo.Text;
             string descripcion = TxtModificacion.Text.Trim();
 
+            int result;
             if (tipo == "AMBOS")
             {
-               ServModificacion.IngresarModificacionDobleAsync(fecha, numero, destino, descripcion);
+                result = await ServModificacion.IngresarModificacionDobleAsync(fecha, numero, destino, descripcion);
             }
             else
             {
-               ServModificacion.IngresarModificacionAsync(fecha, numero, destino, tipo, descripcion);
+                result = await ServModificacion.IngresarModificacionAsync(fecha, numero, destino, tipo, descripcion);
             }
+            CleanFormIngreso();
+            Resultado(result, "INGRESO");
 
         }
 
         private async void BtnBuscar_Click(object sender, EventArgs e)
         {
+             await GetListModificaionesAsync();
+            //IntercambiovistaListView(true);
             
+
+            ListView.Items.Clear();
+            foreach (string[] item in _lista)
+            {
+
+                // Simula una tarea larga
+                var listvi = new ListViewItem(item);
+                ListView.Items.Add(listvi);
+
+            }
+            IntercambiovistaListView(false);
+            Util.CartelConfirmInfo("Carga Completa", "BUSQUEDA");
+
+        }
+
+        public void IntercambiovistaListView(bool vista)
+        {
+            if (vista)
+            {
+                ImgTablaData.Image = Properties.Resources.icons8_loading_infinity;
+            }
+            else
+            {
+                ImgTablaData.Image = Properties.Resources.techny_working_with_big_data_on_server;
+            }
+            VistaLoading.Visible = vista;
+            ProgressBarTop.Visible = vista;
+
+            ListView.Visible = !vista;
+        }
+
+        private void BckTablaData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int count = 0;
+            foreach (string[] item in _lista)
+            {
+
+                // Simula una tarea larga
+                Thread.Sleep(100);
+                BckTablaData.ReportProgress(count++);
+           
+
+            }
+
+            
+            
+
+
+        }
+
+        private void BckTablaData_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBarTop.Value = e.ProgressPercentage;
+        }
+
+        private void BckTablaData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ProgressBarTop.Visible = false;
+        }
+
+
+        public async Task GetListModificaionesAsync()
+        {
             string tipo = ComboTipo.Text != "INTERNA" && ComboTipo.Text != "EXTERNA" ? "" : ComboTipo.Text;
             string destino = ComboDestino.Text.ToUpper();
             string numero = ComboNumero.Text.ToUpper();
-            //TablaData.DataSource = ServModificacion.GetModificacionList(tipo, destino, numero);
-            TablaData.DataSource = await ServModificacion.GetModificacionListAsync(tipo,destino, numero);
-            IntercambioVistaTablaData(false);
-            Util.CartelConfirmInfo("Carga Completa", "Busqueda");
+            _lista = await ServModificacion.GetModificacionListAsync(tipo, destino, numero);
+           
         }
+
+        private void Resultado(int result, string titulo)
+        {
+            if(result >= 1) Util.CartelConfirmInfo(titulo + " correcto", titulo.ToUpper());
+            else Util.CartelError(titulo + " incorrecto", titulo.ToUpper());
+        }
+
+
+
+
+        private void BtnVer_Click(object sender, EventArgs e)
+        {
+
+            IntercambioVistaTablaData(TablaData.Visible);
+        }
+
 
         public void IntercambioVistaTablaData(bool vista)
         {
-            ImgTablaData.Visible = vista;
-            TablaData.Visible = !ImgTablaData.Visible;
+
+
+            VistaLoading.Visible = vista;
+            TablaData.Visible = !vista;
+
+
         }
 
 
@@ -103,7 +197,7 @@ namespace Etiquetas
             }
         }
 
-        
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -153,6 +247,7 @@ namespace Etiquetas
             ComboDestino.Enabled = true;
             ComboNumero.Enabled = false;
             CargarDestinos();
+            ComboDestino.Enabled = true;
         }
 
 
@@ -171,19 +266,83 @@ namespace Etiquetas
 
         private async void BtnEliminar_Click(object sender, EventArgs e)
         {
-
-            DialogResult dresult = Util.CartelConfirmWarn("Estas Seguro que querés eliminar?", "ELIMINACION");
-
-            if (dresult == DialogResult.Yes)
-            {
-                int id = Convert.ToInt32(TablaData.CurrentRow.Cells[0].Value);
-
-                await ServModificacion.DeleteLogicoModificacionAsync(id);
-                IntercambioVistaTablaData(true);
-            }
-
-            
+            await Eliminacionmodificacion();
 
         }
-    }
+
+        private async Task Eliminacionmodificacion()
+        {
+            if (ListView.SelectedItems.Count > 0)
+            {
+
+
+                DialogResult dresult = Util.CartelConfirmWarn("¿Estas Seguro que querés eliminar?", "ELIMINACION");
+
+                if (dresult == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(ListView.SelectedItems[0].Text);
+
+                    int result = await ServModificacion.DeleteLogicoModificacionAsync(id);
+
+                    HabilitarBtnsConsulta(false);
+                    Resultado(result, "Eliminacion");
+
+                    if (result >= 1)
+                    {
+                        ListView.Items.Remove(ListView.SelectedItems[0]);
+
+                    }
+                }
+            }
+            else
+            {
+                Util.CartelError("No hay ningun elemento seleccionado", "Error Seleccion");
+            }
+        }
+
+        public void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            
+           SingleModificacion.Instance.SetModificacion(
+            Convert.ToInt32(ListView.SelectedItems[0].SubItems[0].Text),
+             ListView.SelectedItems[0].SubItems[1].Text,
+            ListView.SelectedItems[0].SubItems[2].Text,
+            ListView.SelectedItems[0].SubItems[3].Text,
+            ListView.SelectedItems[0].SubItems[4].Text,
+            ListView.SelectedItems[0].SubItems[5].Text);
+
+
+
+            ActulizarModificacion AMForm = new(ListView, ImgTablaData, ListView.SelectedItems[0]);
+            AMForm.ShowDialog();
+            
+        }
+
+        public void TemaIndigo()
+        {
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo800, Primary.Indigo900, Primary.Indigo500, Accent.DeepOrange700, TextShade.WHITE);
+        }
+
+        
+
+        private void HabilitarBtnsConsulta(bool bol)
+        {
+            BtnActualizar.Enabled = bol;
+            BtnEliminar.Enabled = bol;
+        }
+
+        private void ListView_ItemActivate(object sender, EventArgs e)
+        {
+            MessageBox.Show(ListView.SelectedItems[0].Text);
+        }
+
+        private void ListView_MouseClick(object sender, MouseEventArgs e)
+        {
+            HabilitarBtnsConsulta(true);
+
+        }
+    } 
 }
